@@ -1,0 +1,103 @@
+flowchart TB
+ subgraph subGraph0["User Interface Layer"]
+        UI["Streamlit Web Interface"]
+        QI["Query Input"]
+        CONFIG["Configuration Panel"]
+        RESULTS["Results Display"]
+  end
+ subgraph subGraph1["Query Processing Engine"]
+        QP["Query Parser"]
+        RBP["Rule-Based Parser"]
+        LLP["LLM Parser"]
+        RAGP["RAG-Enhanced Parser"]
+  end
+ subgraph subGraph2["RAG System"]
+        ST["Sentence Transformer<br>all-MiniLM-L6-v2"]
+        EMB["Embeddings Store"]
+        SS["Semantic Search"]
+        DP["Dynamic Prompt Builder"]
+  end
+ subgraph subGraph3["LLM Providers"]
+        GOOGLE["Google Gemini<br>2.5-flash, 2.5-pro, 2.0-flash"]
+        OPENAI["OpenAI<br>GPT-4o, GPT-4o-mini, GPT-3.5"]
+        ANTHROPIC["Anthropic<br>Claude-3-5-sonnet"]
+  end
+ subgraph subGraph4["MCP Server Layer"]
+        MCP["MCP Server<br>mcp_server.py"]
+        TOOLS["Available Tools"]
+        CALC["Calculator Tool"]
+        TRIG["Trigonometry Tool"]
+        RESOURCES["Available Resources"]
+        HEALTH["Health Check Tool"]
+        ECHO["Echo Tool"]
+  end
+ subgraph subGraph5["Data Layer"]
+        SQLITE["SQLite Database<br>mcp_chat_history.db"]
+        CACHE["Streamlit Cache<br>Server Discovery"]
+        SESSION["Session State"]
+  end
+ subgraph subGraph6["External APIs"]
+        STOCK["Stock Price APIs"]
+        EXTERNAL["Other External Resources"]
+  end
+
+    UI --> QI & SESSION
+    QI --> QP
+    CONFIG --> QP
+    QP --> RBP & LLP & RAGP & MCP & SQLITE
+    RAGP --> SS
+    SS --> EMB
+    EMB --> ST
+    ST --> DP
+    DP --> LLP
+    LLP --> GOOGLE & OPENAI & ANTHROPIC
+    MCP --> TOOLS & RESOURCES & CACHE & RESULTS
+    TOOLS --> CALC & TRIG & HEALTH & ECHO & EMB
+    RESOURCES --> STOCK & EXTERNAL & EMB
+    RESULTS --> UI
+    CACHE --> EMB
+
+     UI:::userLayer
+     QI:::userLayer
+     CONFIG:::userLayer
+     RESULTS:::userLayer
+     QP:::processLayer
+     RBP:::processLayer
+     LLP:::processLayer
+     RAGP:::processLayer
+     ST:::ragLayer
+     EMB:::ragLayer
+     SS:::ragLayer
+     DP:::ragLayer
+     GOOGLE:::llmLayer
+     OPENAI:::llmLayer
+     ANTHROPIC:::llmLayer
+     MCP:::mcpLayer
+     TOOLS:::mcpLayer
+     CALC:::mcpLayer
+     TRIG:::mcpLayer
+     HEALTH:::mcpLayer
+     ECHO:::mcpLayer
+     RESOURCES:::mcpLayer
+     SQLITE:::dataLayer
+     CACHE:::dataLayer
+     SESSION:::dataLayer
+     STOCK:::externalLayer
+     EXTERNAL:::externalLayer
+
+    classDef userLayer fill:#e1f5fe,stroke:#00008B,stroke-width:2px
+    classDef processLayer fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef ragLayer fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef llmLayer fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef mcpLayer fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+    classDef dataLayer fill:#f1f8e9,stroke:#33691e,stroke-width:2px
+    classDef externalLayer fill:#fff8e1,stroke:#f57f17,stroke-width:2px
+
+    style subGraph5 color:#D50000
+    style subGraph0 fill:#BBDEFB
+    style subGraph2 color:#D50000
+    style subGraph1 fill:#E1BEE7
+    style subGraph3 color:#D50000,fill:#BBDEFB
+    style subGraph4 fill:#C8E6C9
+
+

@@ -1,0 +1,11 @@
+nest-asyncio
+fastmcp[server]
+uvicorn
+requests
+yfinance
+google-generativeai
+openai
+anthropic
+streamlit
+sentence-transformers 
+scikit-learn

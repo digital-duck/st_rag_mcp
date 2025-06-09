@@ -1,0 +1,1 @@
+streamlit run mcp_client.py 
