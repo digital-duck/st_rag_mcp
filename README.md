@@ -4,7 +4,7 @@ The RAG system is particularly well-designed, using sentence transformers to bui
 
 ## What is [MCP](https://modelcontextprotocol.io/introduction)
 
-A protocol to provide context to LLM models
+MCP stands for Model Context protocol, it helps provide contexts to LLM model for tool-use.
 
 ![MCP Arch](./docs/mcp-arch.png)
 

@@ -48,6 +48,7 @@ SAMPLE_QUERIES = """
 - health check
 - server diagnostics
 - repeat this message: hello MCP server
+- what is 3 factorial? (fail)
 - what is pi (fail)
 """
 
@@ -971,23 +972,33 @@ def do_sidebar():
         st.header("⚙️ Configuration")
         st.info(f"📍 [Session ID] `{st.session_state.session_id}`")
         
-        # RAG System Status
-        st.subheader("🧠 RAG System")
-        if RAG_AVAILABLE and st.session_state.rag_system.model:
-            st.success("✅ RAG System Active")
-            st.info("🔍 Semantic search enabled")
-            
-            # RAG settings
-            st.session_state.use_rag = st.checkbox(
-                "🎯 Use RAG-Enhanced Parsing",
-                value=st.session_state.use_rag,
-                help="Use semantic search to find relevant tools dynamically"
-            )
-        else:
-            st.error("❌ RAG System Disabled")
-            st.warning("Install: `pip install sentence-transformers scikit-learn`")
-            st.session_state.use_rag = False
-        
+
+        # RAG settings
+        st.session_state.use_rag = st.checkbox(
+            "🎯 Use RAG-Enhanced Parsing",
+            value=st.session_state.use_rag,
+            help="Use semantic search to find relevant tools dynamically"
+        )
+
+        if st.session_state.use_rag:
+
+            c_1, c_2 = st.columns([2,2])
+            # RAG System Status
+            with c_1:
+                st.markdown("### 🧠 RAG System")
+
+            with c_2:
+                if RAG_AVAILABLE and st.session_state.rag_system.model:
+                    st.success("✅ Active")
+                    # st.info("🔍 Semantic search enabled")
+                    
+                else:
+                    st.error("❌ Disabled")
+                    st.warning("Install: `pip install sentence-transformers scikit-learn`")
+                    st.session_state.use_rag = False
+
+
+
         # LLM Provider/Model Selection
         c1, c2 = st.columns([2,3])
         with c1:
@@ -1029,8 +1040,15 @@ def do_sidebar():
             "Google": "✅" if os.getenv("GEMINI_API_KEY") else "❌",
         }
         
-        for provider, status in api_keys_status.items():
-            st.write(f"{status} {provider}")
+        c__1, c__2, c__3 = st.columns([1, 1, 1])
+        with c__1:
+            st.markdown(f"{api_keys_status['OpenAI']}OpenAI")
+        with c__2:
+            st.markdown(f"{api_keys_status['Google']}Google")
+        with c__3:
+            st.markdown(f"{api_keys_status['Anthropic']}Anthropic")
+        # for provider, status in api_keys_status.items():
+        #     st.write(f"{status} {provider}")
         
         # Server Connection using st.cache_resource for discovery only!
         st.subheader("🔌 Server Status")
