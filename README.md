@@ -2,8 +2,16 @@
 
 The RAG system is particularly well-designed, using sentence transformers to build rich contextual embeddings and performing semantic search to find the most relevant tools for each query. This makes the system much more robust than traditional keyword-based approaches.
 
+## What is [MCP](https://modelcontextprotocol.io/introduction)
+
+A protocol to provide context to LLM models
+
+![MCP Arch](./docs/mcp-arch.png)
+
 
 ## Architecture Diagram 
+
+MCP with RAG
 
 ![RAG MCP Arch](./docs/st_rag_mcp-arch.png)
 
@@ -30,14 +38,16 @@ The Mermaid diagram illustrates:
 
 ## Setup
 ```bash
+# create a virtual environment
 conda create -n mcp
 conda activate mcp
-git clone https://github.com/digital-duck/st_rag_mcp.git
 
+# obtain source code
+git clone https://github.com/digital-duck/st_rag_mcp.git
 cd st_rag_mcp
 pip install -r requirements.txt
 
-# in 1st terminal
+# open 1st terminal
 cd src
 python mcp_server.py
 
