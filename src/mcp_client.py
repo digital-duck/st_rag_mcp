@@ -1009,7 +1009,8 @@ def do_sidebar():
         # Parsing Mode
         st.session_state.use_llm = st.checkbox(
             "🧠 Use LLM Parsing",
-            value=st.session_state.use_llm
+            value=st.session_state.use_llm,
+            key="cfg_use_llm",
         )
         
         # Parsing Mode Display

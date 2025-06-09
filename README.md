@@ -5,7 +5,7 @@ The RAG system is particularly well-designed, using sentence transformers to bui
 
 ## Architecture Diagram 
 
-![RAG MCP](./docs/MCP-arch-diagram.png)
+![RAG MCP Arch](./docs/st_rag_mcp-arch.png)
 
 
 The Mermaid diagram illustrates:
@@ -19,6 +19,8 @@ The Mermaid diagram illustrates:
 - **Data Persistence** including SQLite storage and caching mechanisms
 
 ## Key Features
+
+![RAG MCP UI](./docs/st_rag_mcp_ui.png)
 
 1. **Intelligent Tool Selection** using RAG to find relevant tools dynamically
 2. **Flexible Parsing Strategy** with fallback mechanisms (RAG → LLM → Rule-based)
@@ -45,11 +47,14 @@ cd src
 streamlit run mcp_client.py
 ```
 
+## Demo Video
+- [MCP + RAG](https://youtu.be/)
+
 
 ## References
 
-- [MCP - RAG & Self-Evolve Agent](https://youtu.be/ZtwN79n9dRE?si=5GYFUrX7INMxhUNM)
 - [RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation](https://arxiv.org/abs/2505.03275)
 - [ALITA: GENERALIST AGENT ENABLING SCALABLE AGENTIC REASONING WITH MINIMAL PREDEFINITION AND MAXIMAL SELF-EVOLUTION](https://arxiv.org/abs/2505.20286)
+- [MCP - RAG & Self-Evolve Agent](https://youtu.be/ZtwN79n9dRE?si=5GYFUrX7INMxhUNM)
 
 
