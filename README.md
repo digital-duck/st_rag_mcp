@@ -58,7 +58,7 @@ streamlit run mcp_client.py
 ```
 
 ## Demo Video
-- [MCP + RAG](https://youtu.be/)
+- [MCP + RAG](https://youtu.be/K2jgrMsgZxA)
 
 
 ## References
