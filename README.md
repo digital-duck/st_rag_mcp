@@ -63,6 +63,7 @@ streamlit run mcp_client.py
 
 ## References
 
+- https://www.anthropic.com/news/integrations
 - [RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation](https://arxiv.org/abs/2505.03275)
 - [ALITA: GENERALIST AGENT ENABLING SCALABLE AGENTIC REASONING WITH MINIMAL PREDEFINITION AND MAXIMAL SELF-EVOLUTION](https://arxiv.org/abs/2505.20286)
 - [MCP - RAG & Self-Evolve Agent](https://youtu.be/ZtwN79n9dRE?si=5GYFUrX7INMxhUNM)
